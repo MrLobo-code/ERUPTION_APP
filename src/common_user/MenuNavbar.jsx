@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import DropdownMenu from "./components/DropdownMenu";
 
 const MenuNavbar = ({ children }) => {
+
     const [open_dropdown, set_open_dropdown] = useState(false);
+
     return (
         <>
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -28,7 +30,6 @@ const MenuNavbar = ({ children }) => {
                                 </Link>
                             </li>
 
-                            {/* <button onClick={() => set_open_dropdown(true)} className="text-gray-900 dark:text-white hover:underline"> */}
                             <button onClick={() => set_open_dropdown((prev) => !prev)} className="text-gray-900 dark:text-white hover:underline">
                                 Categorías
                             </button>
@@ -48,6 +49,12 @@ const MenuNavbar = ({ children }) => {
                     </div>
                 </div>
             </nav>
+            {/* <button onClick={make_payment} className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-2 rounded mr-1 w-16"> */}
+            <button className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-2 rounded mr-1 w-16">
+                <Link to={`/checkout`}>
+                    TEST
+                </Link>
+            </button>
             {open_dropdown && <DropdownMenu />}
             {children} {/* Porqué funciona??  */}
         </>

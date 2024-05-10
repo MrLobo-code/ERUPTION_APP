@@ -1,7 +1,8 @@
 .dropdown_1 {
     position: absolute;
     top: 7rem;
-    left: 1.7rem;
+    /* left: 1.7rem; */
+    left: 25rem;
     width: 120px;
     padding: 15px;
     border-radius: 8px;

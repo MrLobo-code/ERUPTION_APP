@@ -9,6 +9,7 @@ export default {
     "./src/common_user/Carousel.jsx",
     "./src/common_user/Card.jsx",
     "./src/common_user/components/DropdownMenu.jsx",
+    "./src/root_user/pages/CheckoutForm.jsx"
   ],
   theme: {
     extend: {},
