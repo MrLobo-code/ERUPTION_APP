@@ -3,6 +3,8 @@ import Jewelry from "../common_user/pages/Jewelry";
 import HomePage from "../common_user/pages/HomePage";
 import PrivateRoutes from "./protectedRoutes/PrivateRoutes";
 import Checkout from "../root_user/components/Checkout";
+import ProductPage from "../common_user/pages/ProductPage";
+import MenuNavbar from "../common_user/MenuNavbar";
 
 export default function AppRouter() {
     return (
@@ -12,7 +14,12 @@ export default function AppRouter() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/jewelry" element={<Jewelry />} />
                     <Route path="/checkout" element={<Checkout />} />
+                    <Route path="/product-page" element={<ProductPage />} />
                 </Route>
+                {/* <Route element={<CommonRoutes />}> */}
+                    {/* <Route path="/product-page" element={<ProductPage />} /> */}
+                {/* </Route> */}
+
             </Routes>
         </>
     );
