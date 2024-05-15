@@ -25,8 +25,8 @@ const MenuNavbar = ({ children }) => {
                     <div className="flex items-center">
                         <ul className="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
                             <li>
-                                <Link to={`/`}>
-                                    <a href="#" className="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</a>
+                                <Link to={`/`} id="RouterNavLink">
+                                    <p href="#" className="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</p>
                                 </Link>
                             </li>
 
@@ -38,7 +38,7 @@ const MenuNavbar = ({ children }) => {
                                 <a href="#" className="text-gray-900 dark:text-white hover:underline">Company</a>
                             </li>
                             <li>
-                                <Link to={`/jewelry`}>
+                                <Link to={`/jewelry`} id="RouterNavLink">
                                     <p className="text-gray-900 dark:text-white hover:underline">Joyas</p>
                                 </Link>
                             </li>
@@ -51,7 +51,7 @@ const MenuNavbar = ({ children }) => {
             </nav>
             {/* <button onClick={make_payment} className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-2 rounded mr-1 w-16"> */}
             <button className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-2 rounded mr-1 w-16">
-                <Link to={`/checkout`}>
+                <Link to={`/checkout`} id="RouterNavLink">
                     TEST
                 </Link>
             </button>
