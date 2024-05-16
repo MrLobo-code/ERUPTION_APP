@@ -14,4 +14,12 @@ export default defineConfig({
 
   ////////////////////////////////////////////////////////////////
   plugins: [react()],
+  define: {
+    "process.env.VITE_STRIPE_PK": JSON.stringify(
+      process.env.VITE_STRIPE_PK
+    ),
+    "process.env.VITE_STRIPE_SK": JSON.stringify(
+      process.env.VITE_STRIPE_SK
+    ),
+  },
 });

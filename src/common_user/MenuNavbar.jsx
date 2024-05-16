@@ -29,11 +29,9 @@ const MenuNavbar = ({ children }) => {
                                     <p href="#" className="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</p>
                                 </Link>
                             </li>
-
                             <button onClick={() => set_open_dropdown((prev) => !prev)} className="text-gray-900 dark:text-white hover:underline">
                                 Categorías
                             </button>
-
                             <li>
                                 <a href="#" className="text-gray-900 dark:text-white hover:underline">Company</a>
                             </li>

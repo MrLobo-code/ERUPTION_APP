@@ -5,51 +5,55 @@ const CheckoutForm = () => {
   const elements = useElements();
 
   const handleSubmit = async (event) => {
-    // We don't want to let default form submission happen here,
-    // which would refresh the page.
-    event.preventDefault();
+    try {
+      // We don't want to let default form submission happen here,
+      // which would refresh the page.
+      event.preventDefault();
 
-    if (!stripe || !elements) {
-      // Stripe.js hasn't yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
-      return;
-    }
+      if (!stripe || !elements) {
+        // Stripe.js hasn't yet loaded.
+        // Make sure to disable form submission until Stripe.js has loaded.
+        return;
+      }
 
-    const result = await fetch("http://192.168.2.157:8000/api/create-checkout-session", {
-      method: 'POST',
-      mode: 'payment',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        currency: 'usd',
-        // email: emailInput,
-        amount: price * 100,
-        // paymentMethodType: "card",
-      }),
-      // VITE_STRIPE_SK: import.meta.env.VITE_STRIPE_SK
-    });
+      const result = await fetch("http://192.168.2.157:8000/api/create-checkout-session", {
+        method: 'POST',
+        mode: 'payment',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          currency: 'usd',
+          // email: emailInput,
+          amount: 1000 * 100,
+          // paymentMethodType: "card",
+        }),
+        // VITE_STRIPE_SK: import.meta.env.VITE_STRIPE_SK
+      });
 
-    const { client_secret: clientSecret } = await result.json();
+      const { client_secret: clientSecret } = await result.json();
+      // const { client_secret: clientSecret } = await result.json();
 
-    const { error } = await stripe.confirmPayment({
-      //`Elements` instance that was used to create the Payment Element
-      mode: 'payment',
-      elements,
-      clientSecret,
-      confirmParams: {
-        return_url: "https://example.com/order/123/complete",
-      },
-    });
+      const { error } = await stripe.confirmPayment({
+        //`Elements` instance that was used to create the Payment Element
+        elements,
+        clientSecret,
+        confirmParams: {
+          return_url: "https://example.com/order/123/complete",
+        },
+      });
 
 
-    if (result.error) {
-      // Show error to your customer (for example, payment details incomplete)
-      console.log(result.error.message);
-    } else {
-      // Your customer will be redirected to your `return_url`. For some payment
-      // methods like iDEAL, your customer will be redirected to an intermediate
-      // site first to authorize the payment, then redirected to the `return_url`.
+      if (result.error) {
+        // Show error to your customer (for example, payment details incomplete)
+        console.log(result.error.message);
+      } else {
+        // Your customer will be redirected to your `return_url`. For some payment
+        // methods like iDEAL, your customer will be redirected to an intermediate
+        // site first to authorize the payment, then redirected to the `return_url`.
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
