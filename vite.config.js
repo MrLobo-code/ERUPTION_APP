@@ -5,12 +5,12 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   // ALLOW HTTPS CONNECTIONS ///////////////////////////////////
 
-  server: {
-    https: {
-      key: "./eruption_app-privateKey.key",
-      cert: "./eruption_app.crt",
-    },
-  },
+  // server: {
+  //   https: {
+  //     key: "./eruption_app-privateKey.key",
+  //     cert: "./eruption_app.crt",
+  //   },
+  // },
 
   ////////////////////////////////////////////////////////////////
   plugins: [react()],
