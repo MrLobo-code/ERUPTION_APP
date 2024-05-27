@@ -48,11 +48,15 @@ const MenuNavbar = ({ children }) => {
                 </div>
             </nav>
             {/* <button onClick={make_payment} className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-2 rounded mr-1 w-16"> */}
-            <button className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-2 rounded mr-1 w-16">
+
+            
+            {/* <button className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-2 rounded mr-1 w-16">
                 <Link to={`/checkout`} id="RouterNavLink">
                     TEST
                 </Link>
-            </button>
+            </button> */}
+
+
             {open_dropdown && <DropdownMenu />}
             {children} {/* Porqué funciona??  */}
         </>
