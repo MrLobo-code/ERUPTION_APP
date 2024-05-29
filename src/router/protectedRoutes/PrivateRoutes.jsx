@@ -3,11 +3,13 @@ import MenuNavbar from "../../common_user/MenuNavbar";
 
 const PrivateRoutes = () => {
 
-    return (
-        <MenuNavbar>
-            <Outlet />
-        </MenuNavbar>
-    )
+    return status !== "not-authenticated"
+        ? (
+            <MenuNavbar status={status}>
+                <Outlet />
+            </MenuNavbar>
+        )
+        : <Navigate to="/login" />;
 }
 
 export default PrivateRoutes;

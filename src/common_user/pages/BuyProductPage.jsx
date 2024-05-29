@@ -57,11 +57,19 @@ const BuyProductPage = () => {
                     </div>
                 </div>
                 <div className="m-4 mb-4 flex justify-center">
-                    <stripe-buy-button
-                        buy-button-id="buy_btn_1PKTx7P3BkSI1DXnoQXYRGtu"
-                        publishable-key={import.meta.env.VITE_STRIPE_PK}
-                    >
-                    </stripe-buy-button>
+                    {
+                        status !== "authenticated"
+                            ? <stripe-buy-button
+                                buy-button-id="buy_btn_1PKTx7P3BkSI1DXnoQXYRGtu"
+                                publishable-key={import.meta.env.VITE_STRIPE_PK}
+                            >
+                            </stripe-buy-button>
+                            : <stripe-buy-button
+                                // buy-button-id="buy_btn_1PKTx7P3BkSI1DXnoQXYRGtu"
+                                // publishable-key={import.meta.env.VITE_STRIPE_PK}
+                            >
+                            </stripe-buy-button>
+                    }
                 </div>
             </div>
         </>
