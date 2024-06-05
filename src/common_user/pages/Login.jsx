@@ -19,7 +19,8 @@ const Login = () => {
     // }
 
 
-    return status !== "not-authenticated"
+    // return status !== "not-authenticated"
+    return status !== "authenticated"
         ? (
             <>
                 <section className="bg-gray-50 dark:bg-gray-900">

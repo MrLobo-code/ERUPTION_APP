@@ -18,18 +18,20 @@ export default function AppRouter() {
     return (
         <>
             <Routes>
-                {/* <Route element={<CommonRoutes status={status} />}> */}
-                <Route path="/buy" element={<BuyProductPage />} />
-                <Route path="/product-page" element={<ProductPage />} />
-                <Route path="/jewelry" element={<Jewelry />} />
-                <Route path="/home" element={<HomePage />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/sign_up" element={<SignUp />} />
-                {/* </Route> */}
+                <Route element={<CommonRoutes status={status} />}>
+                    {/* <Route element={<CommonRoutes status={status} />}> */}
+                    <Route path="/buy" element={<BuyProductPage />} />
+                    <Route path="/product-page" element={<ProductPage />} />
+                    <Route path="/jewelry" element={<Jewelry />} />
+                    <Route path="/home" element={<HomePage />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/sign_up" element={<SignUp />} />
+                    {/* </Route> */}
 
-                {/* <Route element={<PrivateRoutes status={status} />}> */}
-                <Route path="/*" element={<Navigate to='/home' />} />
-                {/* </Route> */}
+                    {/* <Route element={<PrivateRoutes status={status} />}> */}
+                    <Route path="/*" element={<Navigate to='/home' />} />
+                    {/* </Route> */}
+                </Route>
             </Routes>
         </>
     );

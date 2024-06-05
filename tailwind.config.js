@@ -12,11 +12,10 @@ export default {
     "./src/root_user/pages/CheckoutForm.jsx",
     "./src/common_user/pages/ProductPage.jsx",
     "./src/common_user/pages/BuyProductPage.jsx",
-    "./src/common_user/pages/Login.jsx"
+    "./src/common_user/pages/Login.jsx",
   ],
   theme: {
     extend: {},
   },
-  plugins: [require('flowbite/plugin')],
-}
-
+  plugins: [require("flowbite/plugin")],
+};
