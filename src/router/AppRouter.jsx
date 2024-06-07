@@ -5,12 +5,14 @@ import PrivateRoutes from "./protectedRoutes/PrivateRoutes";
 import Checkout from "../root_user/components/Checkout";
 import ProductPage from "../common_user/pages/ProductPage";
 import MenuNavbar from "../common_user/MenuNavbar";
-import BuyProductPage from "../common_user/pages/BuyProductPage";
+import Pro1RogAlly from "/src/common_user/components/productsPages/Pro1RogAlly.jsx";
 import Login from "../common_user/pages/Login";
 import CommonRoutes from "./protectedRoutes/CommonRoutes";
 import SignUp from "../common_user/pages/SignUp";
 import { useCheckAuth } from "../common_user/hooks/useCheckAuth";
-
+import Pro2SmartTV from "../common_user/components/productsPages/Pro2SmartTV";
+import SudaderaCard from "../common_user/components/Cards/SudaderaCard";
+import Pro3Sudadera from "../common_user/components/productsPages/Pro3Sudadera";
 export default function AppRouter() {
 
     const { status } = useCheckAuth();
@@ -20,7 +22,9 @@ export default function AppRouter() {
             <Routes>
                 <Route element={<CommonRoutes status={status} />}>
                     {/* <Route element={<CommonRoutes status={status} />}> */}
-                    <Route path="/buy" element={<BuyProductPage />} />
+                    <Route path="/RogAlly" element={<Pro1RogAlly />} />
+                    <Route path="/SmartTV" element={<Pro2SmartTV />} />
+                    <Route path="/Sudadera" element={<Pro3Sudadera />} />
                     <Route path="/product-page" element={<ProductPage />} />
                     <Route path="/jewelry" element={<Jewelry />} />
                     <Route path="/home" element={<HomePage />} />

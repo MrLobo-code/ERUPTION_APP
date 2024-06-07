@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { FaRegDotCircle } from "react-icons/fa";
-import { useCheckAuth } from "../hooks/useCheckAuth";
+import { useCheckAuth } from "../../hooks/useCheckAuth";
 
-const BuyProductPage = () => {
+const Pro3Sudadera = () => {
 
     const { status } = useCheckAuth();
 
-    const [currentImage, SetCurrentImage] = useState("/src/assets/testImages/console1.jpg");
+    const [currentImage, SetCurrentImage] = useState("/src/assets/testImages/pr3/1.jpg");
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -22,16 +22,19 @@ const BuyProductPage = () => {
     const handleCurrentImage = (val) => {
         switch (val) {
             case 1:
-                updateImage("/src/assets/testImages/console1.jpg", val);
+                updateImage("/src/assets/testImages/pr3/1.jpg", val);
                 break;
             case 2:
-                updateImage("/src/assets/testImages/console2.jpg", val);
+                updateImage("/src/assets/testImages/pr3/2.jpg", val);
                 break;
             case 3:
-                updateImage("/src/assets/testImages/console3.jpg", val);
+                updateImage("/src/assets/testImages/pr3/3.jpg", val);
                 break;
             case 4:
-                updateImage("/src/assets/testImages/console4.jpg", val);
+                updateImage("/src/assets/testImages/pr3/4.jpg", val);
+                break;
+            case 5:
+                updateImage("/src/assets/testImages/pr3/5.jpg", val);
                 break;
             default:
                 console.log(`Error`);
@@ -44,9 +47,6 @@ const BuyProductPage = () => {
 
     return (
         <>
-            <button onClick={() => { console.log(status); }}>
-                test
-            </button>
             <div className="grid grid-cols-2">
                 <div className=" m-4 grid grid-cols-2">
                     <div className="grid place-content-center">
@@ -54,10 +54,11 @@ const BuyProductPage = () => {
                         <button onClick={() => handleCurrentImage(2)}><FaRegDotCircle className="m-2" /></button>
                         <button onClick={() => handleCurrentImage(3)}><FaRegDotCircle className="m-2" /></button>
                         <button onClick={() => handleCurrentImage(4)}><FaRegDotCircle className="m-2" /></button>
+                        <button onClick={() => handleCurrentImage(5)}><FaRegDotCircle className="m-2" /></button>
                     </div>
                     <div className="grid place-content-center">
                         <figure className="max-w-lg">
-                            <img className="h-auto max-w-full rounded-lg" src={currentImage} alt="image description" />
+                            <img className="max-w-full rounded-lg object-contain h-48 w-96" src={currentImage} alt="image description" />
                             <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image caption</figcaption>
                         </figure>
                     </div>
@@ -70,7 +71,7 @@ const BuyProductPage = () => {
                                 <>
                                     <div className="blur-sm">
                                         <figure className="max-w-lg">
-                                            <img className="h-auto max-w-full rounded-lg" src="/src/assets/productsImgs/BuyRog.jpg" alt="image description" />
+                                            <img className="h-auto max-w-full rounded-lg" src="/src/assets/productsImgs/Sudadera.jpg" alt="image description" />
                                             <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image caption</figcaption>
                                         </figure>
                                     </div>
@@ -79,8 +80,8 @@ const BuyProductPage = () => {
                             : (
                                 <>
                                     <stripe-buy-button
-                                        buy-button-id="buy_btn_1PKTx7P3BkSI1DXnoQXYRGtu"
-                                        publishable-key={import.meta.env.VITE_STRIPE_PK}
+                                        buy-button-id="buy_btn_1POptEP3BkSI1DXnutHTsaac"
+                                        publishable-key="pk_test_51PDX3UP3BkSI1DXnRtIUS2pG5q2U6M4Bg6PEiO6iMZ6sump4oks8qvXPCTJcnlBUdH446So4ftVWbdLX8LAihf2I00vZBZw08F"
                                     >
                                     </stripe-buy-button>
                                 </>
@@ -92,4 +93,4 @@ const BuyProductPage = () => {
     );
 }
 
-export default BuyProductPage;
+export default Pro3Sudadera;

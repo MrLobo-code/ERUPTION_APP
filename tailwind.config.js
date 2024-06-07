@@ -11,8 +11,16 @@ export default {
     "./src/common_user/components/DropdownMenu.jsx",
     "./src/root_user/pages/CheckoutForm.jsx",
     "./src/common_user/pages/ProductPage.jsx",
-    "./src/common_user/pages/BuyProductPage.jsx",
     "./src/common_user/pages/Login.jsx",
+
+    // Products
+
+    "./src/common_user/components/productsPages/Pro1RogAlly.jsx",
+    "./src/common_user/components/productsPages/Pro2SmartTV.jsx",
+
+    // Cards
+    "./src/common_user/components/Cards/RogAllyCard.jsx",
+    "./src/common_user/components/Cards/SmartTVCard.jsx",
   ],
   theme: {
     extend: {},
