@@ -30,6 +30,7 @@ export default function AppRouter() {
                     <Route path="/home" element={<HomePage />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/sign_up" element={<SignUp />} />
+                    <Route path="/checkout" element={<Checkout />} />
                     {/* </Route> */}
 
                     {/* <Route element={<PrivateRoutes status={status} />}> */}

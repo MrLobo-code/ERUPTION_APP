@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaRegDotCircle } from "react-icons/fa";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
+import { Link } from "react-router-dom";
 
 const Pro3Sudadera = () => {
 
@@ -62,6 +63,11 @@ const Pro3Sudadera = () => {
                             <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image caption</figcaption>
                         </figure>
                     </div>
+                    <button>
+                        <Link to={`/checkout`} id="RouterNavLink">
+                            TEST
+                        </Link>
+                    </button>
                 </div>
                 <div className="m-4 mb-4 flex justify-center">
                     {
