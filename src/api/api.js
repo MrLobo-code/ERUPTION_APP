@@ -2,12 +2,12 @@ import axios from "axios";
 import { useAuth } from "/src/common_user/hooks/useAuth.jsx";
 
 export const api = axios.create({
-  baseURL: "http://192.168.2.157:8000/api",
+  baseURL: "http://192.168.2.59:8000/api",
 });
 
 export const apiAuth = ({ method, url, data, headers, body }) => {
   return axios({
-    baseURL: "http://192.168.2.157:8000/api",
+    baseURL: "http://192.168.2.59:8000/api",
     method,
     url,
     data,
