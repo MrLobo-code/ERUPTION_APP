@@ -33,7 +33,7 @@ const MenuNavbar = ({ children }) => {
                                         <Link to={`/login`}>
                                             <p href="#" className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</p>
                                         </Link>
-                                        <Link to={`/sign_up`}>
+                                        <Link to={`/signUp`}>
                                             <p href="#" className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Sign in</p>
                                         </Link>
                                     </>

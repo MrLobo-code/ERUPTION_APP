@@ -4,13 +4,17 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../pages/CheckoutForm";
 import { apiAuth } from "../../api/api";
 import LoadingView from "../../common_user/LoadingView";
+import { useLocation } from "react-router-dom";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
 
 const Checkout = () => {
+  const location = useLocation();
+  const { amount, currency } = location.state;
   const [clientSecret, setClientSecret] = useState('')
 
   const handleSubmit = async () => {
+    console.log(amount, currency);
     const res = await apiAuth({
       url: "/create-checkout-session",
       method: "POST",
@@ -18,8 +22,8 @@ const Checkout = () => {
         "Content-Type": "application/json",
       },
       data: JSON.stringify({
-        currency: 'usd',
-        amount: 888,
+        currency: currency,
+        amount: amount,
       }),
     })
     const { client_secret } = await res.data;

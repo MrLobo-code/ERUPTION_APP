@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, Link } from "react-router-dom";
 import Jewelry from "../common_user/pages/Jewelry";
 import HomePage from "../common_user/pages/HomePage";
 import PrivateRoutes from "./protectedRoutes/PrivateRoutes";
@@ -13,6 +13,7 @@ import { useCheckAuth } from "../common_user/hooks/useCheckAuth";
 import Pro2SmartTV from "../common_user/components/productsPages/Pro2SmartTV";
 import SudaderaCard from "../common_user/components/Cards/SudaderaCard";
 import Pro3Sudadera from "../common_user/components/productsPages/Pro3Sudadera";
+import LoadingView from "../common_user/LoadingView";
 export default function AppRouter() {
 
     const { status } = useCheckAuth();
@@ -29,7 +30,10 @@ export default function AppRouter() {
                     <Route path="/jewelry" element={<Jewelry />} />
                     <Route path="/home" element={<HomePage />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/sign_up" element={<SignUp />} />
+                    <Route path="/signUp" element={<SignUp />} />
+
+                    <Route path="/loading" element={<LoadingView />} />
+
                     <Route path="/checkout" element={<Checkout />} />
                     {/* </Route> */}
 

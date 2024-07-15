@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { FaRegDotCircle } from "react-icons/fa";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
 import { Link } from "react-router-dom";
+import Checkout from "../../../root_user/components/Checkout";
 
 const Pro3Sudadera = () => {
 
     const { status } = useCheckAuth();
 
     const [currentImage, SetCurrentImage] = useState("/src/assets/testImages/pr3/1.jpg");
+    const dataToPass = { amount: 7191.00, currency: 'usd' };
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -46,6 +48,8 @@ const Pro3Sudadera = () => {
         SetCurrentImage(imagePath);
     }
 
+
+
     return (
         <>
             <div className="grid grid-cols-2">
@@ -63,11 +67,6 @@ const Pro3Sudadera = () => {
                             <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image caption</figcaption>
                         </figure>
                     </div>
-                    <button>
-                        <Link to={`/checkout`} id="RouterNavLink">
-                            TEST
-                        </Link>
-                    </button>
                 </div>
                 <div className="m-4 mb-4 flex justify-center">
                     {
@@ -85,11 +84,55 @@ const Pro3Sudadera = () => {
                             )
                             : (
                                 <>
-                                    <stripe-buy-button
-                                        buy-button-id="buy_btn_1POptEP3BkSI1DXnutHTsaac"
-                                        publishable-key="pk_test_51PDX3UP3BkSI1DXnRtIUS2pG5q2U6M4Bg6PEiO6iMZ6sump4oks8qvXPCTJcnlBUdH446So4ftVWbdLX8LAihf2I00vZBZw08F"
-                                    >
-                                    </stripe-buy-button>
+                                    <div className="flex flex-col">
+                                        <div className="mt-6 grow sm:mt-8 lg:mt-0 mb-4">
+                                            <div className="space-y-4 rounded-lg border border-gray-100 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800">
+                                                <div className="space-y-2">
+                                                    <dl className="flex items-center justify-between gap-4">
+                                                        <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Original price</dt>
+                                                        <dd className="text-base font-medium text-gray-900 dark:text-white">$6,592.00</dd>
+                                                    </dl>
+
+                                                    <dl className="flex items-center justify-between gap-4">
+                                                        <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Savings</dt>
+                                                        <dd className="text-base font-medium text-green-500">-$299.00</dd>
+                                                    </dl>
+
+                                                    <dl className="flex items-center justify-between gap-4">
+                                                        <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Store Pickup</dt>
+                                                        <dd className="text-base font-medium text-gray-900 dark:text-white">$99</dd>
+                                                    </dl>
+
+                                                    <dl className="flex items-center justify-between gap-4">
+                                                        <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Tax</dt>
+                                                        <dd className="text-base font-medium text-gray-900 dark:text-white">$799</dd>
+                                                    </dl>
+                                                </div>
+
+                                                <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
+                                                    <dt className="text-base font-bold text-gray-900 dark:text-white">Total</dt>
+                                                    <dd className="text-base font-bold text-gray-900 dark:text-white">$7,191.00</dd>
+                                                </dl>
+                                            </div>
+                                            <div className="mt-6 flex items-center justify-center gap-8">
+                                                <img className="h-8 w-auto dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/paypal.svg" alt="" />
+                                                <img className="hidden h-8 w-auto dark:flex" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/paypal-dark.svg" alt="" />
+                                                <img className="h-8 w-auto dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/visa.svg" alt="" />
+                                                <img className="hidden h-8 w-auto dark:flex" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/visa-dark.svg" alt="" />
+                                                <img className="h-8 w-auto dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/mastercard.svg" alt="" />
+                                                <img className="hidden h-8 w-auto dark:flex" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/mastercard-dark.svg" alt="" />
+                                            </div>
+                                        </div>
+                                        {/* <Link to={`/checkout`} id="RouterNavLink" className="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> */}
+                                        <Link to={'/checkout'} state={dataToPass} id="RouterNavLink" className="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            <button >
+                                                Pagar
+                                            </button>
+                                        </Link>
+                                        {/* <button onClick={() => <Checkout param1={"AHHHHHHHHH"} />} className="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            Pagar
+                                        </button> */}
+                                    </div>
                                 </>
                             )
                     }

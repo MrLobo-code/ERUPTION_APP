@@ -17,10 +17,14 @@ export default {
 
     "./src/common_user/components/productsPages/Pro1RogAlly.jsx",
     "./src/common_user/components/productsPages/Pro2SmartTV.jsx",
+    "./src/common_user/components/productsPages/Pro3Sudadera.jsx",
 
     // Cards
     "./src/common_user/components/Cards/RogAllyCard.jsx",
     "./src/common_user/components/Cards/SmartTVCard.jsx",
+    "./src/common_user/components/Cards/SudaderaCard.jsx",
+
+    // "./src/common_user/LoadingView.jsx",
   ],
   theme: {
     extend: {},
