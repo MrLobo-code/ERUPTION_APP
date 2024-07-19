@@ -2,23 +2,20 @@ import React, { useEffect, useState } from "react";
 import { FaRegDotCircle } from "react-icons/fa";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { AutocloseAlert } from "../../../Utils/Functions";
 
-const Pro3Sudadera = () => {
-
+const ProductView = () => {
     const { status } = useCheckAuth();
+
+    const location = useLocation();
+
+    const { id, title } = location.state;
 
     const [currentImage, SetCurrentImage] = useState("/src/assets/testImages/pr3/1.jpg");
     const dataToPass = { amount: 7191.00, currency: 'usd' };
 
     useEffect(() => {
-        const script = document.createElement('script');
-        script.src = 'https://js.stripe.com/v3/buy-button.js';
-        script.async = true;
-        document.body.appendChild(script);
-
-        return () => {
-            document.body.removeChild(script); // Clean up on unmount
-        };
     }, []);
 
     const handleCurrentImage = (val) => {
@@ -69,7 +66,6 @@ const Pro3Sudadera = () => {
                 </div>
                 <div className="m-4 mb-4 flex justify-center">
                     {
-                        // status !== "no-authenticated"
                         status != "authenticated"
                             ? (
                                 <>
@@ -128,11 +124,14 @@ const Pro3Sudadera = () => {
                                             </button>
                                         </Link>
 
-                                        <Link to={'/checkout'} state={dataToPass} id="RouterNavLink" className="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            <button >
-                                                Agregar al carrito
-                                            </button>
-                                        </Link>
+                                        {/* <Link to={'/checkout'} state={dataToPass} id="RouterNavLink" className="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> */}
+                                        <button onClick={() => {
+                                            AutocloseAlert(id + " " + title + " EL BOTON RECONOCE EN QUÉ RODUCTO ESTÁ UBICADO!!! :V");
+                                        }} className="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            Agregar al carrito
+                                            EL BOTON RECONOCE EN QUÉ RODUCTO ESTÁ UBICADO!!! :V
+                                        </button>
+                                        {/* </Link> */}
 
                                     </div>
                                 </>
@@ -144,4 +143,4 @@ const Pro3Sudadera = () => {
     );
 }
 
-export default Pro3Sudadera;
+export default ProductView;

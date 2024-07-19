@@ -18,13 +18,18 @@ export default {
     "./src/common_user/components/productsPages/Pro1RogAlly.jsx",
     "./src/common_user/components/productsPages/Pro2SmartTV.jsx",
     "./src/common_user/components/productsPages/Pro3Sudadera.jsx",
-
+    "./src/common_user/components/productsPages/ProductView.jsx",
     // Cards
     "./src/common_user/components/Cards/RogAllyCard.jsx",
     "./src/common_user/components/Cards/SmartTVCard.jsx",
     "./src/common_user/components/Cards/SudaderaCard.jsx",
+    "./src/common_user/components/Cards/Card.jsx",
+
+    "./src/common_user/pages/ShoppingCart.jsx",
 
     // "./src/common_user/LoadingView.jsx",
+
+    "./src/common_user/components/CartProduct.jsx"
   ],
   theme: {
     extend: {},

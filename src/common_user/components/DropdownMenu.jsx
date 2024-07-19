@@ -5,21 +5,27 @@ const DropdownMenu = () => {
 
     return (
         <>
-            <ul className="dropdown_1 text-sm text-gray-700 dark:text-gray-200">
-                <li>
-                    <Link to={`/jewelry`} id="RouterNavLink">
-                        <p className="text-gray-900 dark:text-white hover:underline">Joyas</p>
-                    </Link>
-                </li>
-                <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                </li>
-                <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                </li>
-                <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
-                </li>
+            <ul className="text-sm text-gray-700 dark:text-gray-200">
+                <Link to={`/jewelry`} id="RouterNavLink">
+                    <li>
+                        <a href="#" className="block px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">Joyas</a>
+                    </li>
+                </Link>
+                <Link to={`/jewelry`} id="RouterNavLink">
+                    <li>
+                        <a href="#" className="block px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                    </li>
+                </Link>
+                <Link to={`/jewelry`} id="RouterNavLink">
+                    <li>
+                        <a href="#" className="block px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                    </li>
+                </Link>
+                <Link to={`/jewelry`} id="RouterNavLink">
+                    <li>
+                        <a href="#" className="block px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+                    </li>
+                </Link>
             </ul>
         </>
     );

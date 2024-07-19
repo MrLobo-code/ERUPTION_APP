@@ -14,6 +14,8 @@ import Pro2SmartTV from "../common_user/components/productsPages/Pro2SmartTV";
 import SudaderaCard from "../common_user/components/Cards/SudaderaCard";
 import Pro3Sudadera from "../common_user/components/productsPages/Pro3Sudadera";
 import LoadingView from "../common_user/LoadingView";
+import ShoppingCart from "../common_user/pages/ShoppingCart";
+import ProductView from "../common_user/components/productsPages/ProductView";
 export default function AppRouter() {
 
     const { status } = useCheckAuth();
@@ -35,8 +37,9 @@ export default function AppRouter() {
                     <Route path="/loading" element={<LoadingView />} />
 
                     <Route path="/checkout" element={<Checkout />} />
+                    <Route path="/shoppingCart" element={<ShoppingCart />} />
                     {/* </Route> */}
-
+                    <Route path="/ProductView" element={<ProductView />} />
                     {/* <Route element={<PrivateRoutes status={status} />}> */}
                     <Route path="/*" element={<Navigate to='/home' />} />
                     {/* </Route> */}

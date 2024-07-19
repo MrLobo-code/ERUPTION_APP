@@ -1,60 +1,46 @@
-import Card from "../Card";
-import React, { useEffect } from 'react';
-import RogAllyCard from "../components/Cards/RogAllyCard";
-import SmartTVCard from "../components/Cards/SmartTVCard";
+import React, { useEffect, useState } from 'react';
 import SudaderaCard from "../components/Cards/SudaderaCard";
-
-// import Carousel from "../Carousel";
-
+import { apiAuth } from "../../api/api";
+import Card from '../components/Cards/Card';
+import LoadingView from '../LoadingView';
 
 const HomePage = () => {
-    // useEffect(() => {
-    //     const script = document.createElement('script');
-    //     script.src = 'https://js.stripe.com/v3/buy-button.js';
-    //     script.async = true;
-    //     document.body.appendChild(script);
+    const [resData, setResData] = useState([]);
 
-    //     return () => {
-    //         document.body.removeChild(script); // Clean up on unmount
-    //     };
-    // }, []);
+    useEffect(() => {
+        getProducts();
+    }, [])
+
+    const getProducts = async () => {
+        try {
+            const response = await apiAuth({ method: 'get', url: '/products' });
+            setResData(response.data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     return (
         <>
-            {/* <Carousel /> */} {/**The Carousel component covers the DropdownMenu componente and doesn't allow it work well (fix) */}
-
-            <div className="flex justify-center mb-8">
-                <div className="p-4">
-                    <RogAllyCard />
-                    <RogAllyCard />
-                    <RogAllyCard />
-                    <RogAllyCard />
-                    {/* <Card />
-                    <Card />
-                    <Card />
-                    <Card /> */}
-                </div>
-                <div className="p-4">
-                    <SmartTVCard />
-                    <SmartTVCard />
-                    <SmartTVCard />
-                    <SmartTVCard />
-                    {/* <Card />
-                    <Card />
-                    <Card />
-                    <Card /> */}
-                </div>
-                <div className="p-4">
-                    <SudaderaCard />
-                    <SudaderaCard />
-                    <SudaderaCard />
-                    <SudaderaCard />
-                    {/* <Card />
-                    <Card />
-                    <Card />
-                    <Card /> */}
-                </div>
-            </div>
+            {
+                resData.length > 0
+                    ? (
+                        <div className="flex justify-center mb-8">
+                            <div className="p-4">
+                                {resData.map((item) => <Card key={item.id} id={item.id} img={`./src/assets/testImages/pr4/1.jpg`} title={item.ProductName} description={item.productDescription} />)}
+                            </div>
+                            <div className="p-4">
+                                {resData.map((item) => <Card key={item.id} id={item.id} img={`./src/assets/testImages/pr4/1.jpg`} title={item.ProductName} description={item.productDescription} />)}
+                            </div>
+                            <div className="p-4">
+                                {resData.map((item) => <Card key={item.id} id={item.id} img={`./src/assets/testImages/pr4/1.jpg`} title={item.ProductName} description={item.productDescription} />)}
+                            </div>
+                        </div>
+                    )
+                    : (
+                        <LoadingView />
+                    )
+            }
         </>
     );
 }

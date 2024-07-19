@@ -5,7 +5,7 @@ import { userLogout, userLogin } from "../../router/Store/auth/authSlice";
 export const useCheckAuth = () => {
     const dispatch = useDispatch()
 
-    const { status, employeeName } = useSelector((state) => state.auth);
+    const { status, employeeName, username } = useSelector((state) => state.auth);
 
     const checkUserAuthentication = async () => {
         try {
@@ -24,6 +24,7 @@ export const useCheckAuth = () => {
     return {
         checkUserAuthentication,
         status,
-        employeeName
+        employeeName,
+        username
     };
 };
