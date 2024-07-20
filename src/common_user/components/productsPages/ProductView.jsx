@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { FaRegDotCircle } from "react-icons/fa";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { AutocloseAlert } from "../../../Utils/Functions";
+import { apiAuth } from "../../../api/api";
 
 const ProductView = () => {
-    const { status } = useCheckAuth();
+    const { status, username } = useCheckAuth();
+    const [resData, setResData] = useState([]);
+
+    const navigate = useNavigate();
 
     const location = useLocation();
 
-    const { id, title } = location.state;
+    const { /*img,*/ id, title, description, price } = location.state;
 
     const [currentImage, SetCurrentImage] = useState("/src/assets/testImages/pr3/1.jpg");
     const dataToPass = { amount: 7191.00, currency: 'usd' };
@@ -44,7 +48,24 @@ const ProductView = () => {
         SetCurrentImage(imagePath);
     }
 
-
+    const handleAddToCart = async () => {
+        try {
+            const response = await apiAuth({
+                method: 'post', url: '/addToCart', data: {
+                    username: username,
+                    ProductName: title,
+                    productDescription: description,
+                    Price: price,
+                    // imgPath: username,
+                }
+            })
+            setResData(response);
+            AutocloseAlert(title + " añadido al carrito");
+            navigate("/home");
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     return (
         <>
@@ -125,14 +146,10 @@ const ProductView = () => {
                                         </Link>
 
                                         {/* <Link to={'/checkout'} state={dataToPass} id="RouterNavLink" className="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> */}
-                                        <button onClick={() => {
-                                            AutocloseAlert(id + " " + title + " EL BOTON RECONOCE EN QUÉ RODUCTO ESTÁ UBICADO!!! :V");
-                                        }} className="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        <button onClick={handleAddToCart} className="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             Agregar al carrito
-                                            EL BOTON RECONOCE EN QUÉ RODUCTO ESTÁ UBICADO!!! :V
                                         </button>
                                         {/* </Link> */}
-
                                     </div>
                                 </>
                             )

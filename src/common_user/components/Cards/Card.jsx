@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import LoadingView from "../../LoadingView";
 
-const Card = ({ img, id, title, description }) => {
+const Card = ({ img, id, title, description, price }) => {
 
-    const dataToPass = { id: id, title: title };
+    const dataToPass = { id: id, title: title, description: description, price: price };
 
     return (
         <>
