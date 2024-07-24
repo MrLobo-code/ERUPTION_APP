@@ -12,6 +12,8 @@ export default {
     "./src/root_user/pages/CheckoutForm.jsx",
     "./src/common_user/pages/ProductPage.jsx",
     "./src/common_user/pages/Login.jsx",
+    "./src/common_user/components/MessagePage.jsx",
+    "./src/common_user/components/MessageView.jsx",
 
     // Products
 
@@ -29,7 +31,7 @@ export default {
 
     // "./src/common_user/LoadingView.jsx",
 
-    "./src/common_user/components/CartProduct.jsx"
+    "./src/common_user/components/CartProduct.jsx",
   ],
   theme: {
     extend: {},

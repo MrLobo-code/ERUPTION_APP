@@ -16,6 +16,7 @@ import Pro3Sudadera from "../common_user/components/productsPages/Pro3Sudadera";
 import LoadingView from "../common_user/LoadingView";
 import ShoppingCart from "../common_user/pages/ShoppingCart";
 import ProductView from "../common_user/components/productsPages/ProductView";
+import MessageView from "../common_user/components/MessageView";
 export default function AppRouter() {
 
     const { status } = useCheckAuth();
@@ -37,9 +38,13 @@ export default function AppRouter() {
                     <Route path="/loading" element={<LoadingView />} />
 
                     <Route path="/checkout" element={<Checkout />} />
-                    <Route path="/shoppingCart" element={<ShoppingCart />} />
+
+                    {/* <Route path="/shoppingCart" element={<ShoppingCart />} /> */}
+                    <Route path="/shoppingCart/:username" element={<ShoppingCart />} />
+
                     {/* </Route> */}
                     <Route path="/ProductView" element={<ProductView />} />
+                    <Route path="/message" element={<MessageView />} />
                     {/* <Route element={<PrivateRoutes status={status} />}> */}
                     <Route path="/*" element={<Navigate to='/home' />} />
                     {/* </Route> */}

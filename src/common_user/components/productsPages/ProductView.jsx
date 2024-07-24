@@ -61,7 +61,8 @@ const ProductView = () => {
             })
             setResData(response);
             AutocloseAlert(title + " añadido al carrito");
-            navigate("/home");
+            // navigate("/home");
+            navigate("/message");
         } catch (e) {
             console.log(e);
         }
