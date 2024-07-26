@@ -3,6 +3,7 @@ import SudaderaCard from "../components/Cards/SudaderaCard";
 import { apiAuth } from "../../api/api";
 import Card from '../components/Cards/Card';
 import LoadingView from '../LoadingView';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
     const [resData, setResData] = useState([]);

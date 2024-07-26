@@ -63,6 +63,7 @@ const ProductView = () => {
             AutocloseAlert(title + " añadido al carrito");
             // navigate("/home");
             navigate("/message");
+            navigate(0);
         } catch (e) {
             console.log(e);
         }
