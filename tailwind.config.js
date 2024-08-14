@@ -14,7 +14,8 @@ export default {
     "./src/common_user/pages/Login.jsx",
     "./src/common_user/components/MessagePage.jsx",
     "./src/common_user/components/MessageView.jsx",
-
+    "./src/root_user/pages/AddNewProduct.jsx",
+    "./src/root_user/pages/UploadImgs.jsx",
     // Products
 
     "./src/common_user/components/productsPages/Pro1RogAlly.jsx",

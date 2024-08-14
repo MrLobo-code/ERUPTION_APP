@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import { AutocloseAlert } from "../../../Utils/Functions";
 import { apiAuth } from "../../../api/api";
 
+// const ProductView = ({ id, title, description, price }) => {
 const ProductView = () => {
     const { status, username } = useCheckAuth();
     const [resData, setResData] = useState([]);
@@ -14,10 +15,14 @@ const ProductView = () => {
 
     const location = useLocation();
 
-    const { /*img,*/ id, title, description, price } = location.state;
+    const { id, img, title, description, price } = location.state;
 
-    const [currentImage, SetCurrentImage] = useState("/src/assets/testImages/pr3/1.jpg");
+    // const [currentImage, SetCurrentImage] = useState("/src/assets/testImages/pr3/1.jpg");
+    const [currentImage, SetCurrentImage] = useState(`https://eruptionbucket.s3.us-east-2.amazonaws.com/${title}/1.jpg`);
     const dataToPass = { amount: 7191.00, currency: 'usd' };
+    
+    console.log(currentImage);
+    console.log(title);
 
     useEffect(() => {
     }, []);
@@ -56,6 +61,7 @@ const ProductView = () => {
                     ProductName: title,
                     productDescription: description,
                     Price: price,
+                    imgPath: img
                     // imgPath: username,
                 }
             })
@@ -107,29 +113,32 @@ const ProductView = () => {
                                             <div className="space-y-4 rounded-lg border border-gray-100 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800">
                                                 <div className="space-y-2">
                                                     <dl className="flex items-center justify-between gap-4">
-                                                        <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Original price</dt>
-                                                        <dd className="text-base font-medium text-gray-900 dark:text-white">$6,592.00</dd>
+                                                        <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Precio Original</dt>
+                                                        {/* <dd className="text-base font-medium text-gray-900 dark:text-white">$6,592.00</dd> */}
+                                                        <dd className="text-base font-medium text-gray-900 dark:text-white">${(Number(price) + (Number(price) / 2)).toFixed(2)}</dd>
                                                     </dl>
 
                                                     <dl className="flex items-center justify-between gap-4">
-                                                        <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Savings</dt>
-                                                        <dd className="text-base font-medium text-green-500">-$299.00</dd>
+                                                        <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Descuento</dt>
+                                                        {/* <dd className="text-base font-medium text-green-500">-$299.00</dd> */}
+                                                        <dd className="text-base font-medium text-green-500">-${(Number(price) / 2).toFixed(2)}</dd>
                                                     </dl>
 
-                                                    <dl className="flex items-center justify-between gap-4">
-                                                        <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Store Pickup</dt>
+                                                    {/* <dl className="flex items-center justify-between gap-4">
+                                                        <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Envío</dt>
                                                         <dd className="text-base font-medium text-gray-900 dark:text-white">$99</dd>
-                                                    </dl>
-
+                                                    </dl> */}
+                                                    {/* 
                                                     <dl className="flex items-center justify-between gap-4">
                                                         <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Tax</dt>
                                                         <dd className="text-base font-medium text-gray-900 dark:text-white">$799</dd>
-                                                    </dl>
+                                                    </dl> */}
                                                 </div>
 
                                                 <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
                                                     <dt className="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                                                    <dd className="text-base font-bold text-gray-900 dark:text-white">$7,191.00</dd>
+                                                    {/* <dd className="text-base font-bold text-gray-900 dark:text-white">$7,191.00</dd> */}
+                                                    <dd className="text-base font-bold text-gray-900 dark:text-white">${Number(price).toFixed(2)}</dd>
                                                 </dl>
                                             </div>
                                             <div className="mt-6 flex items-center justify-center gap-8">

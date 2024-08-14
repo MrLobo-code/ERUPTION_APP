@@ -3,7 +3,7 @@ import { apiAuth } from "../../api/api";
 import { AutocloseAlert } from "../../Utils/Functions";
 import { useNavigate } from "react-router-dom";
 
-const CartProduct = ({ id, username, title, description, price, }) => {
+const CartProduct = ({ id, img, username, title, description, price, }) => {
 
     const navigate = useNavigate();
 
@@ -30,7 +30,9 @@ const CartProduct = ({ id, username, title, description, price, }) => {
             <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
                 <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                     <a href="#" className="shrink-0 md:order-1">
-                        <img className="h-20 w-20 dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg" alt="imac image" />
+
+                        <img className="h-20 w-20 dark:hidden" src={img} alt="imac image" />
+
                         <img className="hidden h-20 w-20 dark:block" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front-dark.svg" alt="imac image" />
                     </a>
 

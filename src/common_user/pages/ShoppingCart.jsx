@@ -41,7 +41,7 @@ const ShoppingCart = () => {
                                         <div className="space-y-6">
 
                                             {
-                                                cart.map((item) => <CartProduct key={item.id} id={item.id} username={username} title={item.ProductName} description={item.productDescription} price={item.Price} />)
+                                                cart.map((item) => <CartProduct key={item.id} id={item.id} img={item.imgPath} username={username} title={item.ProductName} description={item.productDescription} price={item.Price} />)
                                             }
 
                                         </div>

@@ -4,14 +4,14 @@ import LoadingView from "../../LoadingView";
 
 const Card = ({ img, id, title, description, price }) => {
 
-    const dataToPass = { id: id, title: title, description: description, price: price };
+    const dataToPass = { id: id, img: img, title: title, description: description, price: price };
 
     return (
         <>
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-auto">
-                <a href="#">
+                <figure href="#">
                     <img className="rounded-t-lg" src={img} alt="" width="200px" height="200px" />
-                </a>
+                </figure>
                 <div className="p-5">
                     <a href="#">
                         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{id + " " + title}</h5>
