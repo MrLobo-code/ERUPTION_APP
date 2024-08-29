@@ -28,18 +28,14 @@ const HomePage = () => {
                     ? (
                         <div className="flex justify-center mb-8">
                             <div className="p-4">
-                                {resData.map((item) => <Card key={item.id} id={item.id} img={`./src/assets/testImages/pr4/1.jpg`} title={item.ProductName} description={item.productDescription} price={item.Price} />)}
+                                {resData.map((item) => <Card key={item.id} id={item.id} img={`https://eruptionbucket.s3.us-east-2.amazonaws.com/${item.ProductName}/1.jpg`} title={item.ProductName} description={item.productDescription} price={item.Price} />)}
                             </div>
                             <div className="p-4">
-                                {resData.map((item) => <Card key={item.id} id={item.id} img={`./src/assets/testImages/pr4/1.jpg`} title={item.ProductName} description={item.productDescription} price={item.Price} />)}
+                                {resData.map((item) => <Card key={item.id} id={item.id} img={`https://eruptionbucket.s3.us-east-2.amazonaws.com/${item.ProductName}/1.jpg`} title={item.ProductName} description={item.productDescription} price={item.Price} />)}
                             </div>
                             <div className="p-4">
-                                {/* {resData.map((item) => <Card key={item.id} id={item.id} img={`./src/assets/testImages/pr4/1.jpg`} title={item.ProductName} description={item.productDescription} price={item.Price} />)} */}
-                                {resData.map((item) => <Card key={item.id} id={item.id} img={item.ThumbnailURL} title={item.ProductName} description={item.productDescription} price={item.Price} />)}
+                                {resData.map((item) => <Card key={item.id} id={item.id} img={`https://eruptionbucket.s3.us-east-2.amazonaws.com/${item.ProductName}/1.jpg`} title={item.ProductName} description={item.productDescription} price={item.Price} />)}
                             </div>
-                            {/* <figure>
-                                <img src="https://eruptionbucket.s3.us-east-2.amazonaws.com/1.jpg" alt="" />
-                            </figure> */}
                         </div>
                     )
                     : (

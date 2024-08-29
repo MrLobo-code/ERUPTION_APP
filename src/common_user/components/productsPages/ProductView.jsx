@@ -20,7 +20,7 @@ const ProductView = () => {
     // const [currentImage, SetCurrentImage] = useState("/src/assets/testImages/pr3/1.jpg");
     const [currentImage, SetCurrentImage] = useState(`https://eruptionbucket.s3.us-east-2.amazonaws.com/${title}/1.jpg`);
     const dataToPass = { amount: 7191.00, currency: 'usd' };
-    
+
     console.log(currentImage);
     console.log(title);
 
@@ -30,19 +30,19 @@ const ProductView = () => {
     const handleCurrentImage = (val) => {
         switch (val) {
             case 1:
-                updateImage("/src/assets/testImages/pr3/1.jpg", val);
+                updateImage(`https://eruptionbucket.s3.us-east-2.amazonaws.com/${title}/1.jpg`, val);
                 break;
             case 2:
-                updateImage("/src/assets/testImages/pr3/2.jpg", val);
+                updateImage(`https://eruptionbucket.s3.us-east-2.amazonaws.com/${title}/2.jpg`, val);
                 break;
             case 3:
-                updateImage("/src/assets/testImages/pr3/3.jpg", val);
+                updateImage(`https://eruptionbucket.s3.us-east-2.amazonaws.com/${title}/3.jpg`, val);
                 break;
             case 4:
-                updateImage("/src/assets/testImages/pr3/4.jpg", val);
+                updateImage(`https://eruptionbucket.s3.us-east-2.amazonaws.com/${title}/4.jpg`, val);
                 break;
             case 5:
-                updateImage("/src/assets/testImages/pr3/5.jpg", val);
+                updateImage(`https://eruptionbucket.s3.us-east-2.amazonaws.com/${title}/5.jpg`, val);
                 break;
             default:
                 console.log(`Error`);

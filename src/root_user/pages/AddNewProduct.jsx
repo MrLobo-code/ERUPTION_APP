@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { AutocloseAlert } from "../../Utils/Functions";
 import { apiAuth } from "../../api/api";
+import { useNavigate } from "react-router-dom";
 
 const AddNewProduct = () => {
-    const [file, setFile] = useState();
-    // const imagen = 'public/imgs/220147-2.jpg'
+    const [selectedImages, setSelectedImages] = useState('');
+    const MAX_FILES = 5;
+    const navigate = useNavigate();
     const [newProduct, setNewProduct] = useState({
         ProductName: "",
         productDescription: "",
@@ -16,13 +18,18 @@ const AddNewProduct = () => {
         Product: "", //float
         Dimensions: "",
         Color: "",
-        Size: "",
-        ThumbnailURL: "",
+        Size: ""
     });
 
-    const handleFileChange = e => {
-        if (e.target.files) {
-            setFile(e.target.files[0]);
+    const handleFileChange = (event) => {
+        const files = event.target.files;
+        if (files.length !== MAX_FILES) {
+            alert(`Debes seleccionar ${MAX_FILES} archivos.`);
+            // Limitar la selección a los primeros 5 archivos
+            event.target.value = '';
+            setSelectedImages(Array.from(files).slice(0, MAX_FILES));
+        } else {
+            setSelectedImages(files);
         }
     };
 
@@ -37,12 +44,20 @@ const AddNewProduct = () => {
         try {
             event.preventDefault();
             for (let key in newProduct) {
-                if (newProduct.hasOwnProperty(key) && newProduct[key] === "") {
+                if (newProduct.hasOwnProperty(key) && newProduct[key] === "" || selectedImages == '') {
                     AutocloseAlert("Campos Vacios!!!");
                     return true;
                 }
             }
+            try {
+                handleUpload();
+            } catch (e) {
+                console.log(e);
+                AutocloseAlert("Error al subir imagenes")
+                return 0;
+            }
             await apiAuth({ method: 'post', url: '/createNewProduct', data: { ...newProduct } })
+            navigate(0);
         } catch (e) {
             console.log(e);
         }
@@ -50,18 +65,24 @@ const AddNewProduct = () => {
 
     const handleUpload = async () => {
         try {
-            if (file) {
-                console.log("Uploading file...");
+            if (selectedImages && selectedImages !== '') {
+                console.log("Files to upload:", selectedImages);
 
                 const formData = new FormData();
-                formData.append("FileName", file);           // Archivo
-                formData.append("ProductName", newProduct.ProductName); // Nombre del producto
+                for (let i = 0; i < selectedImages.length; i++) {
+                    formData.append("sampleImages[]", selectedImages[i]);
+                }
+                formData.append("path", newProduct.ProductName);
 
-                await apiAuth({ method: "post", url: "/uploadImages", data: formData });
+                await apiAuth({ method: "post", url: "/s3-url", data: formData });
+                AutocloseAlert("Subiendo archivos");
             }
-            file && AutocloseAlert("Subiendo archivo");
+            else {
+                AutocloseAlert("Error, Nada para subir!");
+                return 0;
+            }
         } catch (error) {
-            AutocloseAlert("Error!!!")
+            AutocloseAlert("Error!!!");
             console.error(error);
         }
     }
@@ -113,35 +134,11 @@ const AddNewProduct = () => {
                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Size</label>
                     <input name="Size" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={handleChange} value={newProduct.Size} required />
                 </div>
-                <div className="mb-5">
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ThumbnailURL</label>
-                    <input name="ThumbnailURL" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={handleChange} value={newProduct.ThumbnailURL} required />
-                </div>
-
                 <div className="max-w-sm mx-auto my-auto">
                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sample imgs</label>
                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" htmlFor="file_input">Upload file</label>
-                    <input onChange={handleFileChange} className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" />
-                    {
-                        newProduct.ProductName !== ""
-                            ? (
-                                <div className="flex">
-                                    <button onClick={handleUpload} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        subir imagen
-                                    </button>
-                                </div>
-                            )
-                            : (
-                                <div className="flex">
-                                    <button onClick={handleUpload} className="text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center" disabled>
-                                        subir imagen
-                                    </button>
-                                    <label className="block mb-2 text-sm font-medium text-red-600 dark:text-white" htmlFor="file_input">Se requiere el nombre del producto</label>
-                                </div>
-                            )
-                    }
+                    <input onChange={handleFileChange} className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" multiple />
                 </div>
-
                 {
                     newProduct.ProductName == "" ||
                         newProduct.productDescription == "" ||
@@ -154,7 +151,8 @@ const AddNewProduct = () => {
                         newProduct.Dimensions == "" ||
                         newProduct.Color == "" ||
                         newProduct.Size == "" ||
-                        newProduct.ThumbnailURL == ""
+                        !selectedImages ||
+                        selectedImages == ''
                         ? (
                             <div className="flex mt-4">
                                 <button type="submit" className="text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center" disabled>
@@ -170,9 +168,6 @@ const AddNewProduct = () => {
                         )
                 }
             </form>
-            {/* <div>
-                <img src={imagen} alt="Producto 1" />
-            </div> */}
         </>
     )
 }
