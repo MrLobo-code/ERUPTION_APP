@@ -28,7 +28,6 @@ const ShoppingCart = () => {
 
     return (
         <>
-            {/* <button onClick={() => { AutocloseAlert(username + "  " + cart); }}>TEST</button> */}
             {
                 cart.length > 0
                     ? (
