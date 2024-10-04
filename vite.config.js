@@ -21,5 +21,8 @@ export default defineConfig({
     "process.env.VITE_STRIPE_SK": JSON.stringify(
       process.env.VITE_STRIPE_SK
     ),
+    "process.env.REACT_APP_API_URL": JSON.stringify(
+      process.env.REACT_APP_API_URL
+    )
   },
 });

@@ -2,12 +2,16 @@ import axios from "axios";
 import { useAuth } from "/src/common_user/hooks/useAuth.jsx";
 
 export const api = axios.create({
-  baseURL: "http://192.168.1.74:8000/api",
+  baseURL: "http://192.168.2.119:8000/api",
+  // baseURL: process.env.REACT_APP_API_URL,
+  // baseURL: "https://eruptionshop.com/api",
 });
 
 export const apiAuth = ({ method, url, data, headers, body }) => {
   return axios({
-    baseURL: "http://192.168.1.74:8000/api",
+    baseURL: "http://192.168.2.119:8000/api",
+    // baseURL: process.env.REACT_APP_API_URL,
+    // baseURL: "https://eruptionshop.com/api",
     method,
     url,
     data,

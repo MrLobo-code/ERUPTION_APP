@@ -10,7 +10,8 @@ import { apiAuth } from "../../../api/api";
 const ProductView = () => {
     const { status, username } = useCheckAuth();
     const [resData, setResData] = useState([]);
-
+    const [total, setTotal] = useState();
+    const envio = 99.9;
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -124,6 +125,11 @@ const ProductView = () => {
                                                         <dd className="text-base font-medium text-green-500">-${(Number(price) / 2).toFixed(2)}</dd>
                                                     </dl>
 
+                                                    <dl className="flex items-center justify-between gap-4">
+                                                        <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Envío</dt>
+                                                        {/* <dd className="text-base font-medium text-green-500">-$299.00</dd> */}
+                                                        <dd className="text-base font-medium text-green-500">${envio}</dd>
+                                                    </dl>
                                                     {/* <dl className="flex items-center justify-between gap-4">
                                                         <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Envío</dt>
                                                         <dd className="text-base font-medium text-gray-900 dark:text-white">$99</dd>
@@ -138,7 +144,7 @@ const ProductView = () => {
                                                 <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
                                                     <dt className="text-base font-bold text-gray-900 dark:text-white">Total</dt>
                                                     {/* <dd className="text-base font-bold text-gray-900 dark:text-white">$7,191.00</dd> */}
-                                                    <dd className="text-base font-bold text-gray-900 dark:text-white">${Number(price).toFixed(2)}</dd>
+                                                    <dd className="text-base font-bold text-gray-900 dark:text-white">${setTotal((Number(price) + Number(envio)).toFixed(2))}</dd>
                                                 </dl>
                                             </div>
                                             <div className="mt-6 flex items-center justify-center gap-8">
